@@ -43,7 +43,9 @@ python causal_seal.py verify seal.json --output-text "…the response content…
 | `CAUSAL_DICTIONARY` | `…/profiles/gateway-basic.json` | URL of the parameter dictionary |
 | `CAUSAL_LOG` | `causal-seal-log.ndjson` | append-only audit log path |
 
-Auth (`Authorization`) and content headers are forwarded to the upstream untouched. Streaming and non-JSON responses pass through unsealed.
+Auth (`Authorization`) and content headers are forwarded to the upstream untouched.
+
+**Streaming is supported.** For `stream:true` (SSE) requests, the stream is passed through unchanged (first-token latency preserved) and a final `event: causal-seal` SSE event carrying the seal is injected just before `data: [DONE]`. Clients that don't care can ignore the extra event; clients that want provenance read it. Non-streaming responses carry the seal in the `X-Causal-Seal` header instead. Non-JSON / non-completion responses pass through untouched.
 
 ## Honest scope
 
