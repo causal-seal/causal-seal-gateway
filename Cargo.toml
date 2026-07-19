@@ -1,0 +1,16 @@
+[package]
+name = "causal-seal-gateway"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "A drop-in, OpenAI-compatible proxy that attaches a Causal Seal to every AI response — zero code change for the calling application."
+
+[dependencies]
+tiny_http = "0.12"
+ureq = "2"
+serde_json = "1"
+sha2 = "0.10"
+hex = "0.4"
+
+[profile.release]
+opt-level = 2
