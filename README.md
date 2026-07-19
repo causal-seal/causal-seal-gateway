@@ -1,5 +1,7 @@
 # Causal Seal Gateway
 
+[![ci](https://github.com/causal-seal/causal-seal-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/causal-seal/causal-seal-gateway/actions/workflows/ci.yml)
+
 > A drop-in, OpenAI-compatible proxy that attaches a **[Causal Seal](https://causalseal.org)** to every AI response — **without the calling application changing a single line of code.**
 
 Point your app at the gateway instead of the provider:

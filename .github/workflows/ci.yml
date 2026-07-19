@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cargo build (release)
+        run: cargo build --release
+
+      - name: Selftest — fingerprint interoperability
+        run: ./target/release/causal-seal-gateway selftest
+
+      - name: Docker build
+        run: docker build -t causal-seal-gateway .
